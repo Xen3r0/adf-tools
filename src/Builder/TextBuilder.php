@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DH\Adf\Builder;
 
 use DH\Adf\Node\Inline\Text;
+use DH\Adf\Node\Mark\Code;
 use DH\Adf\Node\Mark\Em;
 use DH\Adf\Node\Mark\Link;
 use DH\Adf\Node\Mark\Strike;
@@ -19,6 +20,13 @@ trait TextBuilder
     public function text(string $text): self
     {
         $this->append(new Text($text));
+
+        return $this;
+    }
+
+    public function code(string $text): self
+    {
+        $this->append(new Text($text, new Code()));
 
         return $this;
     }
